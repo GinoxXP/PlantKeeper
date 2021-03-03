@@ -829,7 +829,7 @@ CompositeCollider2D:
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
-  m_GeometryType: 0
+  m_GeometryType: 1
   m_GenerationType: 0
   m_EdgeRadius: 0
   m_ColliderPaths:
@@ -913,6 +913,7 @@ GameObject:
   - component: {fileID: 228920108}
   - component: {fileID: 228920109}
   - component: {fileID: 228920110}
+  - component: {fileID: 228920111}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -979,7 +980,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 228920105}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: 1, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1699673027}
@@ -1071,10 +1072,31 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 5
-  upZone: {fileID: 1593716683}
-  leftZone: {fileID: 1265721785}
-  downZone: {fileID: 2030447971}
-  rightZone: {fileID: 350203787}
+  upZone: {fileID: 1593716684}
+  leftZone: {fileID: 1265721786}
+  downZone: {fileID: 350203789}
+  rightZone: {fileID: 2030447972}
+--- !u!50 &228920111
+Rigidbody2D:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 228920105}
+  m_BodyType: 1
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDrag: 0
+  m_AngularDrag: 0.05
+  m_GravityScale: 1
+  m_Material: {fileID: 0}
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 7
 --- !u!1 &272588079
 GameObject:
   m_ObjectHideFlags: 0
@@ -1369,7 +1391,7 @@ GameObject:
   - component: {fileID: 350203787}
   - component: {fileID: 350203789}
   m_Layer: 0
-  m_Name: DetectZone (3)
+  m_Name: DetectZone Down
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1413,7 +1435,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1699673027}
-  m_RootOrder: 3
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &350203789
 MonoBehaviour:
@@ -1523,7 +1545,7 @@ GameObject:
   - component: {fileID: 1265721785}
   - component: {fileID: 1265721786}
   m_Layer: 0
-  m_Name: DetectZone (1)
+  m_Name: DetectZone Left
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1640,7 +1662,7 @@ GameObject:
   - component: {fileID: 1593716683}
   - component: {fileID: 1593716684}
   m_Layer: 0
-  m_Name: DetectZone
+  m_Name: DetectZone Up
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1698,7 +1720,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f2d3f96d41078d63d853bd72d40cc516, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  detectedObject: {fileID: 1593716681}
+  detectedObject: {fileID: 0}
 --- !u!1 &1699673026
 GameObject:
   m_ObjectHideFlags: 0
@@ -1728,8 +1750,8 @@ Transform:
   m_Children:
   - {fileID: 1593716682}
   - {fileID: 1265721784}
-  - {fileID: 2030447970}
   - {fileID: 350203788}
+  - {fileID: 2030447970}
   m_Father: {fileID: 228920107}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -1745,7 +1767,7 @@ GameObject:
   - component: {fileID: 2030447971}
   - component: {fileID: 2030447972}
   m_Layer: 0
-  m_Name: DetectZone (2)
+  m_Name: DetectZone Right
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1763,7 +1785,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1699673027}
-  m_RootOrder: 2
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!61 &2030447971
 BoxCollider2D:

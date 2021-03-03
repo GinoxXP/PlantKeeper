@@ -10,10 +10,10 @@ public class PlayerController : MonoBehaviour
 
     private Vector3 moveDirection;
 
-    [SerializeField] BoxCollider2D upZone;
-    [SerializeField] BoxCollider2D leftZone;
-    [SerializeField] BoxCollider2D downZone;
-    [SerializeField] BoxCollider2D rightZone;
+    [SerializeField] DetectZone upZone;
+    [SerializeField] DetectZone leftZone;
+    [SerializeField] DetectZone downZone;
+    [SerializeField] DetectZone rightZone;
 
     private bool isRunning;
 
@@ -22,11 +22,13 @@ public class PlayerController : MonoBehaviour
     {
         if(!isRunning && context.performed)
         {
-            isRunning = true;
-
             moveDirection = context.ReadValue<Vector2>();
-            SetTarget();
-            StartCoroutine(Move());
+            if(CheckFreeWay())
+            {
+                isRunning = true;
+                SetTarget();
+                StartCoroutine(Move());
+            }
         }
     }
 
@@ -45,6 +47,35 @@ public class PlayerController : MonoBehaviour
             yield return null;
         }
         isRunning = false;
+    }
+
+    bool CheckFreeWay()
+    {
+        if(moveDirection.x > 0)
+            if(rightZone.DetectedObject == null)
+                return true;
+            else
+                return false;
+
+        if(moveDirection.x < 0)
+            if(leftZone.DetectedObject == null)
+                return true;
+            else
+                return false;
+
+        if(moveDirection.y > 0)
+            if(upZone.DetectedObject == null)
+                return true;
+            else
+                return false;
+
+        if(moveDirection.y < 0)
+            if(downZone.DetectedObject == null)
+                return true;
+            else
+                return false;
+
+        return false;
     }
 
 }

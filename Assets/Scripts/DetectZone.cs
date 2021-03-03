@@ -6,10 +6,9 @@ using UnityEngine;
 public class DetectZone : MonoBehaviour
 {
     public GameObject detectedObject;
-
-    void Start()
+    public GameObject DetectedObject
     {
-        detectedObject = gameObject;
+        get{return detectedObject;}
     }
 
     void OnTriggerStay2D(Collider2D collider)
