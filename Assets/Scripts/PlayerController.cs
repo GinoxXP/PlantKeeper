@@ -51,31 +51,35 @@ public class PlayerController : MonoBehaviour
 
     bool CheckFreeWay()
     {
-        if(moveDirection.x > 0)
-            if(rightZone.DetectedObject == null)
-                return true;
-            else
-                return false;
+        GameObject detectedObject = null;
 
+        if(moveDirection.x > 0)
+            detectedObject = rightZone.DetectedObject;
         if(moveDirection.x < 0)
-            if(leftZone.DetectedObject == null)
-                return true;
-            else
-                return false;
+            detectedObject = leftZone.DetectedObject;
 
         if(moveDirection.y > 0)
-            if(upZone.DetectedObject == null)
-                return true;
-            else
-                return false;
-
+            detectedObject = upZone.DetectedObject;
         if(moveDirection.y < 0)
-            if(downZone.DetectedObject == null)
+            detectedObject = downZone.DetectedObject;
+
+
+        if(detectedObject == null)
+            return true;
+        else
+        {
+            if(detectedObject.TryGetComponent(out Box box))
+            {
+                box.SetMoveDirection(moveDirection);
+                //TODO hit animation
+            }
+
+            if(detectedObject.TryGetComponent(out Key key))
+            {
                 return true;
-            else
-                return false;
+            }
+        }
 
         return false;
     }
-
 }
