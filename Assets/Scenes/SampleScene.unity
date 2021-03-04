@@ -988,6 +988,7 @@ GameObject:
   - component: {fileID: 228920109}
   - component: {fileID: 228920110}
   - component: {fileID: 228920111}
+  - component: {fileID: 228920112}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -1171,6 +1172,19 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 7
+--- !u!114 &228920112
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 228920105}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e8eeed5bc83a3488bb8cb9b5d606b189, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  isHaveKey: 0
 --- !u!1 &272588079
 GameObject:
   m_ObjectHideFlags: 0
@@ -1917,6 +1931,8 @@ GameObject:
   - component: {fileID: 1080837695}
   - component: {fileID: 1080837694}
   - component: {fileID: 1080837693}
+  - component: {fileID: 1080837697}
+  - component: {fileID: 1080837698}
   m_Layer: 0
   m_Name: Door
   m_TagString: Untagged
@@ -2036,6 +2052,34 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1080837697
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1080837692}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d7f115857c69347d58511b46ed542f21, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  isOpen: 0
+  closed: {fileID: -802731616617403683, guid: 04171a37ec90efd81b58aeec746af14c, type: 3}
+  opened: {fileID: 1331601424735708511, guid: 04171a37ec90efd81b58aeec746af14c, type: 3}
+--- !u!114 &1080837698
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1080837692}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c3c6dc4f83fb1418e8c3f0f69fbe8fa1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  sceneName: SampleScene
 --- !u!1 &1265721783
 GameObject:
   m_ObjectHideFlags: 0

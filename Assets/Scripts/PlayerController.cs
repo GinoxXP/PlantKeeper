@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
+[RequireComponent(typeof(Inventory))]
 public class PlayerController : MonoBehaviour
 {
     [SerializeField] float speed;
@@ -17,6 +18,12 @@ public class PlayerController : MonoBehaviour
 
     private bool isRunning;
 
+    private Inventory inventory;
+
+    void Start()
+    {
+        inventory = GetComponent<Inventory>();
+    }
 
     public void OnMove(InputAction.CallbackContext context)
     {
@@ -77,6 +84,12 @@ public class PlayerController : MonoBehaviour
             if(detectedObject.TryGetComponent(out Key key))
             {
                 return true;
+            }
+
+            if(detectedObject.TryGetComponent(out Door door))
+            {
+                door.TryOpen(inventory.isHaveKey);
+                return door.IsOpen;
             }
         }
 
