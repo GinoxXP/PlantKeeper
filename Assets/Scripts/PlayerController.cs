@@ -6,23 +6,28 @@ using UnityEngine.InputSystem;
 [RequireComponent(typeof(Inventory))]
 public class PlayerController : MonoBehaviour
 {
-    [SerializeField] float speed;
+    [SerializeField] private float speed;
+
     private Vector3 target;
 
     private Vector3 moveDirection;
 
-    [SerializeField] DetectZone upZone;
-    [SerializeField] DetectZone leftZone;
-    [SerializeField] DetectZone downZone;
-    [SerializeField] DetectZone rightZone;
+    [SerializeField] private DetectZone upZone;
+    [SerializeField] private DetectZone leftZone;
+    [SerializeField] private DetectZone downZone;
+    [SerializeField] private DetectZone rightZone;
 
     private bool isRunning;
 
     private Inventory inventory;
 
+    private StrokeManager strokeManager;
+
     void Start()
     {
         inventory = GetComponent<Inventory>();
+        strokeManager = GameObject.Find("Stroke Manager")
+                                  .GetComponent<StrokeManager>();
     }
 
     public void OnMove(InputAction.CallbackContext context)
@@ -72,24 +77,31 @@ public class PlayerController : MonoBehaviour
 
 
         if(detectedObject == null)
+        {
+            strokeManager.Stroke();
             return true;
+        }
         else
         {
             if(detectedObject.TryGetComponent(out Box box))
             {
                 box.SetMoveDirection(moveDirection);
+                strokeManager.Stroke();
                 //TODO hit animation
             }
 
             if(detectedObject.TryGetComponent(out Key key))
             {
+                strokeManager.Stroke();
                 return true;
             }
 
             if(detectedObject.TryGetComponent(out Door door))
             {
+                bool isOpen = door.IsOpen;
                 door.TryOpen(inventory.isHaveKey);
-                return door.IsOpen;
+                strokeManager.Stroke();
+                return isOpen;
             }
         }
 
