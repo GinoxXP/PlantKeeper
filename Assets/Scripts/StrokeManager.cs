@@ -14,6 +14,9 @@ public class StrokeManager : MonoBehaviour
 
     private List<Plant> updatablePlants = new List<Plant>();
 
+    private Animator playerAnimator;
+    private PlayerController playerController;
+
     void Start()
     {
         loadScene = GetComponent<LoadScene>();
@@ -21,6 +24,10 @@ public class StrokeManager : MonoBehaviour
                                   .GetComponent<Text>();
 
         strokeCounter.text = strokesLeft.ToString();
+
+        GameObject player = GameObject.Find("Player");
+        playerAnimator = player.GetComponent<Animator>();
+        playerController = player.GetComponent<PlayerController>();
     }
 
     public void Stroke()
@@ -34,7 +41,7 @@ public class StrokeManager : MonoBehaviour
     void CheckGameOver()
     {
         if(strokesLeft < 0)
-            loadScene.Reload();
+            StartCoroutine(GameOver());
     }
 
     void UpdatePlants()
@@ -46,5 +53,16 @@ public class StrokeManager : MonoBehaviour
     public void AddPlantToList(Plant plant)
     {
         updatablePlants.Add(plant);
+    }
+
+    IEnumerator GameOver()
+    {
+        playerController.isCanWalk= false;
+        playerAnimator.Play("Cry");
+
+        yield return new WaitForSeconds(1);
+
+        loadScene.Reload();
+		yield return null;
     }
 }

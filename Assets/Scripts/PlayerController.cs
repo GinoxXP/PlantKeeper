@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
-[RequireComponent(typeof(Inventory))]
+[RequireComponent(typeof(Inventory), typeof(Animator), typeof(SpriteRenderer))]
 public class PlayerController : MonoBehaviour
 {
     [SerializeField] private float speed;
@@ -20,19 +20,24 @@ public class PlayerController : MonoBehaviour
     private bool isRunning;
 
     private Inventory inventory;
-
     private StrokeManager strokeManager;
+    private Animator animator;
+    private SpriteRenderer spriteRenderer;
+
+    public bool isCanWalk = true;
 
     void Start()
     {
         inventory = GetComponent<Inventory>();
         strokeManager = GameObject.Find("Stroke Manager")
                                   .GetComponent<StrokeManager>();
+        animator = GetComponent<Animator>();
+        spriteRenderer = GetComponent<SpriteRenderer>();
     }
 
     public void OnMove(InputAction.CallbackContext context)
     {
-        if(!isRunning && context.performed)
+        if(!isRunning && context.performed && isCanWalk)
         {
             moveDirection = context.ReadValue<Vector2>();
             if(CheckFreeWay())
@@ -66,9 +71,15 @@ public class PlayerController : MonoBehaviour
         GameObject detectedObject = null;
 
         if(moveDirection.x > 0)
+        {
             detectedObject = rightZone.DetectedObject;
+            spriteRenderer.flipX = false;
+        }
         if(moveDirection.x < 0)
+        {
             detectedObject = leftZone.DetectedObject;
+            spriteRenderer.flipX = true;
+        }
 
         if(moveDirection.y > 0)
             detectedObject = upZone.DetectedObject;
@@ -87,7 +98,7 @@ public class PlayerController : MonoBehaviour
             {
                 box.SetMoveDirection(moveDirection);
                 strokeManager.Stroke();
-                //TODO hit animation
+                animator.Play("Hit");
             }
 
             if(detectedObject.TryGetComponent(out Key key))
