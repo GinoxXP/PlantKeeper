@@ -12,12 +12,14 @@ public class StrokeManager : MonoBehaviour
 
     private Text strokeCounter;
 
+    private List<Plant> updatablePlants = new List<Plant>();
+
     void Start()
     {
         loadScene = GetComponent<LoadScene>();
         strokeCounter = GameObject.Find("Stroke Counter")
                                   .GetComponent<Text>();
-                                  
+
         strokeCounter.text = strokesLeft.ToString();
     }
 
@@ -25,6 +27,7 @@ public class StrokeManager : MonoBehaviour
     {
         strokesLeft--;
         strokeCounter.text = strokesLeft.ToString();
+        UpdatePlants();
         CheckGameOver();
     }
 
@@ -32,5 +35,16 @@ public class StrokeManager : MonoBehaviour
     {
         if(strokesLeft < 0)
             loadScene.Reload();
+    }
+
+    void UpdatePlants()
+    {
+        foreach(Plant plant in updatablePlants)
+            plant.Stroke();
+    }
+
+    public void AddPlantToList(Plant plant)
+    {
+        updatablePlants.Add(plant);
     }
 }
