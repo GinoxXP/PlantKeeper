@@ -22,6 +22,8 @@ public class Door : MonoBehaviour
     {
         sprite = GetComponent<SpriteRenderer>();
         loadScene = GetComponent<LoadScene>();
+
+        UpdateState();
     }
 
     void UpdateState()
