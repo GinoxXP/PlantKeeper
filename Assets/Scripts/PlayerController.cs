@@ -24,7 +24,8 @@ public class PlayerController : MonoBehaviour
     private Animator animator;
     private SpriteRenderer spriteRenderer;
 
-    public bool isCanWalk = true;
+    [HideInInspector]
+    public bool isCanWalk;
 
     void Start()
     {
@@ -33,6 +34,8 @@ public class PlayerController : MonoBehaviour
                                   .GetComponent<StrokeManager>();
         animator = GetComponent<Animator>();
         spriteRenderer = GetComponent<SpriteRenderer>();
+
+        StartCoroutine(PauseBeforePlay());
     }
 
     public void OnMove(InputAction.CallbackContext context)
@@ -52,6 +55,13 @@ public class PlayerController : MonoBehaviour
     void SetTarget()
     {
         target = transform.position + moveDirection;
+    }
+
+    IEnumerator PauseBeforePlay()
+    {
+        yield return new WaitForSeconds(0.2f);
+        isCanWalk = true;
+        yield return null;
     }
 
     IEnumerator Move()

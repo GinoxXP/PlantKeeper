@@ -249,7 +249,7 @@ MonoBehaviour:
   leftZone: {fileID: 2471115021245160115}
   downZone: {fileID: 2471115020161635460}
   rightZone: {fileID: 2471115020466148973}
-  isCanWalk: 1
+  isCanWalk: 0
 --- !u!50 &2471115020275511334
 Rigidbody2D:
   serializedVersion: 4
