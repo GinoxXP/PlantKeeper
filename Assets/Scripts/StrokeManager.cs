@@ -33,7 +33,7 @@ public class StrokeManager : MonoBehaviour
     public void Stroke()
     {
         strokesLeft--;
-        strokeCounter.text = strokesLeft.ToString();
+        strokeCounter.text = strokesLeft >= 0 ? strokesLeft.ToString() : "X";
         UpdatePlants();
         CheckGameOver();
     }
