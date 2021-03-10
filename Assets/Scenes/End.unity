@@ -790,12 +790,10 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: "Hello.   You   completed   the   game.   I   decided   not   to   do  
-    difficult   levels   so   that   you   can    pass   it   as   quickly   as  
-    possible.   This   was   my   game   for \U0001F337  Great   Spring   Game  
-    Jam:   2021.   I   hope   you   enjoyed   it.   I   want   to   remind   you  
-    that   this   game   is   Open   Source.   You   can   get   sources   in   my  
-    GitHub   profile (https://github.com/GinoxXP)"
+  m_Text: "Hello.   You   completed   the   game.   This   was   my   work   for
+    \U0001F337  Great   Spring   Game   Jam:   2021.   I   hope   you   enjoyed  
+    it.   I   want   to   remind   you   that   this   game   is   Open   Source.  
+    You   can   get   sources   in   my   GitHub   profile   (https://github.com/GinoxXP)"
 --- !u!222 &966568337
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -1004,6 +1002,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Pivot.y
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8220659919753173831, guid: 23576ac045bf8fdbb80a587706d6a154,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 4
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 23576ac045bf8fdbb80a587706d6a154, type: 3}
