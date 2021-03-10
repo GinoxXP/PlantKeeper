@@ -271,6 +271,11 @@ PrefabInstance:
       propertyPath: plantType
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 4969133079388787488, guid: e65f81457add8b66a952c007acdef971,
+        type: 3}
+      propertyPath: currentStage
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 4969133079388787516, guid: e65f81457add8b66a952c007acdef971,
         type: 3}
       propertyPath: m_Name
@@ -427,7 +432,7 @@ PrefabInstance:
     - target: {fileID: 8194732505014066445, guid: 1aa1d1053a8551a20b92ad6ac6aa2115,
         type: 3}
       propertyPath: strokesLeft
-      value: 38
+      value: 37
       objectReference: {fileID: 0}
     - target: {fileID: 8194732505014066447, guid: 1aa1d1053a8551a20b92ad6ac6aa2115,
         type: 3}
