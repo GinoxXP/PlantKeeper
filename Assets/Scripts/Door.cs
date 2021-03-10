@@ -5,7 +5,7 @@ using UnityEngine;
 [RequireComponent(typeof(SpriteRenderer), typeof(LoadScene))]
 public class Door : MonoBehaviour
 {
-    [SerializeField] private bool isOpen;
+    private bool isOpen;
     public bool IsOpen
     {
         get{return isOpen;}
@@ -23,7 +23,18 @@ public class Door : MonoBehaviour
         sprite = GetComponent<SpriteRenderer>();
         loadScene = GetComponent<LoadScene>();
 
+        isOpen = !KeyOnMap();
         UpdateState();
+    }
+
+    bool KeyOnMap()
+    {
+        var potentialKeys = GameObject.FindGameObjectsWithTag("Key");
+        foreach(var potentialKey in potentialKeys)
+            if(potentialKey.TryGetComponent(out Key key))
+                return true;
+
+        return false;
     }
 
     void UpdateState()
