@@ -2,6 +2,8 @@
 
 My work for [Great Spring Game Jam: 2021](https://itch.io/jam/great-spring-game-jam-2021)
 
+[View game page](https://ginoxxp.itch.io/plant-keeper)
+
 ![](images/gameplay1.png)
 
 ## Theme of jam
